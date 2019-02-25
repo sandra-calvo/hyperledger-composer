@@ -16,23 +16,23 @@ Then you’ll learn how to refine and deploy your blockchain network, and you’
 
 ### Pre-requisites
 To follow along with this tutorial, you should have the following software installed on your computer:
-•	Web browser
+  •	Web browser
 
 ### Purpose
 
 This lab introduces the subject of using Hyperledger Composer to build a network model. After completing the lab, you should be able to:
 
-•	Learn the concepts of a Hyperledger Business Network
-•	Understand the Hyperledger Composer modeling language
-•	Use the modeling language to model the business network
-•	Test the business network
+  •	Learn the concepts of a Hyperledger Business Network
+  •	Understand the Hyperledger Composer modeling language
+  •	Use the modeling language to model the business network
+  •	Test the business network
 
 # PHASE 1
 ## Hyperledger Composer and basic concepts
 One of the Hyperledger projects hosted by The Linux Foundation, Hyperledger Composer is a set of tools that makes building blockchain applications easier, and consists of:
-•	A modeling language called CTO (an homage to the original project name, Concerto)
-•	A user interface called Hyperledger Composer Playground for rapid configuration, deployment, and testing of a business network
-•	Command-Line Interface (CLI) tools for integrating business networks modeled using Hyperledger Composer with a running instance of the Hyperledger Fabric blockchain network
+  •	A modeling language called CTO (an homage to the original project name, Concerto)
+  •	A user interface called Hyperledger Composer Playground for rapid configuration, deployment, and testing of a business network
+  •	Command-Line Interface (CLI) tools for integrating business networks modeled using Hyperledger Composer with a running instance of the Hyperledger Fabric blockchain network
 
 **Hyperledger Composer Playground** is a browser-based interface that you can use to model your business network: what items of value (assets) are exchanged, who participates (participants) in their exchange, how access is secured (access control), what business logic (transactions) is involved in the process, and more.
 
@@ -40,18 +40,18 @@ Hyperledger Composer Playground (Playground from now on) uses your browser’s l
 
 ### Business network concepts
 A **Business Network** is the definition of the parties and events involved in tracking transactions which can include trading of assets. At a high level, a business network is a group of entities who work together to accomplish certain goals.  In order to achieve these goals, there must be agreement among the members of the business network regarding:
-•	The goods and services that are exchanged
-•	How the exchange is to take place (including business rules governing payment and penalties)
-•	Which members within the group are allowed to participate, and when
+  •	The goods and services that are exchanged
+  •	How the exchange is to take place (including business rules governing payment and penalties)
+  •	Which members within the group are allowed to participate, and when
 
 #### Assets
 An asset is anything of value that can be exchanged between parties in a business agreement. That means an asset can be pretty much anything. Examples include:
-•	A boat
-•	A quantity of stock
-•	A house
-•	A crate of bananas
-•	A shipment of bananas
-•	A contract for shipment of 1000 crates of bananas for X price based on conditions {X, Y, Z}
+  •	A boat
+  •	A quantity of stock
+  •	A house
+  •	A crate of bananas
+  •	A shipment of bananas
+  •	A contract for shipment of 1000 crates of bananas for X price based on conditions {X, Y, Z}
 You name it. If it has perceived value, and can be exchanged between parties, it’s an asset. 
 
 #### Participants

@@ -16,7 +16,7 @@ Then you’ll learn how to refine and deploy your blockchain network, and you’
 
 ### Pre-requisites
 To follow along with this tutorial, you should have the following software installed on your computer:
-  •	Web browser
+  - Web browser
 
 ### Purpose
 

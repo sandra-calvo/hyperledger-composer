@@ -3,13 +3,11 @@
 
 In this guide:
   - [Introduction](#introduction)
-  - [PHASE 1](#phase-1): 
-  - [PHASE 2](#phase-2): 
-  - [PHASE 3](#phase-3): 
-  - [PHASE 4](#phase-4): 
-  
-  
-  <img src="/images/simulation2.png" width="100%" height="100%">
+  - [PHASE 1](#phase-1): Hyperledger Composer and basic concepts
+  - [PHASE 2](#phase-2): Access the Hyperledger Composer Playground
+  - [PHASE 3](#phase-3): Modelling Language Basics
+  - [PHASE 4](#phase-4): Build a network
+  - [PHASE 5](#phase-5): Test the Network
 
 ## INTRODUCTION
 This tutorial gets you started developing a blockchain network. I’ll introduce you to Hyperledger Composer and its user interface, Hyperledger Composer Playground, where you can model and test your network with nothing more than Docker and your web browser.
@@ -29,8 +27,8 @@ This lab introduces the subject of using Hyperledger Composer to build a network
 •	Use the modeling language to model the business network
 •	Test the business network
 
-
-## Hyperledger Composer
+# PHASE 1
+## Hyperledger Composer and basic concepts
 One of the Hyperledger projects hosted by The Linux Foundation, Hyperledger Composer is a set of tools that makes building blockchain applications easier, and consists of:
 •	A modeling language called CTO (an homage to the original project name, Concerto)
 •	A user interface called Hyperledger Composer Playground for rapid configuration, deployment, and testing of a business network
@@ -40,14 +38,13 @@ One of the Hyperledger projects hosted by The Linux Foundation, Hyperledger Comp
 
 Hyperledger Composer Playground (Playground from now on) uses your browser’s local storage to simulate the blockchain network’s state storage, which means you don’t need to run a real validating peer network to use Playground.
 
-
-## Business network concepts
+### Business network concepts
 A **Business Network** is the definition of the parties and events involved in tracking transactions which can include trading of assets. At a high level, a business network is a group of entities who work together to accomplish certain goals.  In order to achieve these goals, there must be agreement among the members of the business network regarding:
 •	The goods and services that are exchanged
 •	How the exchange is to take place (including business rules governing payment and penalties)
 •	Which members within the group are allowed to participate, and when
 
-### Assets
+#### Assets
 An asset is anything of value that can be exchanged between parties in a business agreement. That means an asset can be pretty much anything. Examples include:
 •	A boat
 •	A quantity of stock
@@ -57,13 +54,13 @@ An asset is anything of value that can be exchanged between parties in a busines
 •	A contract for shipment of 1000 crates of bananas for X price based on conditions {X, Y, Z}
 You name it. If it has perceived value, and can be exchanged between parties, it’s an asset. 
 
-### Participants
+#### Participants
 A participant is a member of a business network. For the Perishable Goods network, this includes the growers who produce the perishable goods, the shippers who transport them from the growers to the ports, and the importers who take delivery of the goods at the ports. Obviously, this model is oversimplified, but it should give you a sense of how real-world applications are modeled using business network terminology.
 
-### Relationships
+#### Relationships
 You shouldn’t be replicated information about Assets and Participants. Composer provides the mechanism to define relationships between them. So, once I’ve created an asset, with all of the attributes that define that asset, I can simply refer to it from any other Asset, Participant, Transaction or Event. I don’t need to have an attribute like assetName on the Participant who is the Owner of the asset or the Transaction that tracks the service I’ve had on that Asset. I simply create the relationship and I can always get to the assetName through the relationship.
 
-### Transactions
+#### Transactions
 When an asset is “touched,” that interaction potentially affects the state of the blockchain ledger. The interaction is modeled in Hyperledger Composer as a transaction.
 
 Examples of transactions in the Perishable Goods network include:
@@ -75,7 +72,7 @@ Transactions are the definitions of an action, generally involving multiple part
 
 These are things that need to be tracked and auditable. As well, there should be requirements for a transaction to occur and be endorsed so that it can be entered into the ledger. For example, in order to deliver a vehicle to a buyer, funds need to be transferred from the buyer to the seller, the title/registration application needs to be submitted, and the sales manager needs to provide approval of the sales price. If financing is required, all credit checks and qualification has been done and meets the standards set by the seller.
 
-### Events
+#### Events
 An event is a notification produced by the blockchain application and consumed by an external entity (such as an application) in publish/subscribe fashion.
 While the blockchain ledger is updated as assets are exchanged in the system, this is an internal (system) process. However, there are times when an external entity needs to be notified that the state of the ledger has changed, or that maybe something else of note has occurred (or not occurred but should have) in the system. Your blockchain application could use an event in this case.
 
@@ -84,12 +81,12 @@ Examples of events in the Perishable Goods network might include:
 •	A shipment has been received.
 •	A shipment has arrived at the port (an IoT GPS sensor could report this event, for example).
 
-### Identities
+#### Identities
 Users who are authorized to participate in the Business Network and are allowed or required to endorse transactions need an Identity which is handled by a Business Network Card. Some participants in the Business Network may not be endorsing transactions and are simply involved in a transaction. For example, I may be buying a car that is tracked on a Blockchain, but I am not necessarily the endorser of a transaction and may have no need to ever interact directly with the Blockchain. Therefore, I would not need an Identity in the Business Network. 
 
 However, the Sales Manager and Manufacturing Plant would be involved in endorsing the sale of the vehicle and the request for manufacturing as well as the delivery to the customer. Those participants directly involved with endorsing that those things occurred, would need identities.
 
-## Business network files 
+### Business network files 
 
 There are multiple components to a Business Network which we will discuss below and create in some cases. In the Business Network definition, there are multiple files which are used to define and execute the Network.
 
@@ -99,7 +96,6 @@ There are multiple components to a Business Network which we will discuss below 
 •	Query File – defines the types of queries that will be accessible to retrieve information from the Business Network
 •	Business Network Archive – the packaging of the Business Network for deployment into another environment
 •	Business Network Card – a file containing the identity and credentials of an authorized user of the Business Network
-
 
   <img src="/images/HYC1.png" width="100%" height="100%">
 
@@ -121,7 +117,7 @@ This defines which Identities can Create, Read, Update or Delete components of t
 #### Query definition
 This defines what data elements will be exposed with a query.
 
-
+# Phase 2
 ## Access the Hyperledger Composer Playground
 Open your web browser, preferably Chrome or Firefox, and navigate to the Hyperledger Composer Playground on IBM Cloud using the URL https://composer-playground.mybluemix.net/test. You will be presented with this:
 
@@ -297,13 +293,13 @@ Some things to point out. When you were working with creating new SampleAssets a
 
 Before we build our first network, let’s take a look at some of the basics of modelling business networks.
 
-
+# Phase 3
 ## Modelling Language Basics
 
-#### Namespace
+### Namespace
 The Namespace is defined in your model file (.cto). All resources created are implicitly part of this namespace. In addition to your network namespace, there is a system namespace which contains the base classes for assets, events, participants, and transactions.
 
-##### Data types
+### Data types
 Blockchain is often thought of as a type of database, which it is, albeit a purpose-built database. For simplicity and most common usage, Composer is limited to 6 data types.
 
 •	String – a UTF 8 encoded string
@@ -314,7 +310,7 @@ Blockchain is often thought of as a type of database, which it is, albeit a purp
 •	Boolean – a true/false value
 •	You will see below there are also Concepts and Enumerated data types which could be considered custom data types, but they’re just groupings of the above core data types into logical representations of the data (for example Address which would include Address 1 and 2, City, State and Zip)
 
-## Abstract, Concepts and Enumerated Data Types
+### Abstract, Concepts and Enumerated Data Types
 
 Abstracts define a base class of a type of Asset, Participant, Transaction or Event. Other types can then extend that. So, I might have an Abstract Participant called Person that has first and last name and then I can have a Buyer that extends Person and a Seller that extends it as well. Each adding their own unique attributes. Or, an Asset may be owned by a Seller, but can never be owned by a Buyer and wouldn’t be owned by just a Person.
 
@@ -371,6 +367,7 @@ This will take you back to the main Composer page.
 
   <img src="/images/HYC15.png" width="100%" height="100%">
 
+# Phase 4
 ## Build a network
 
 Deploy a new network using sample network template
@@ -397,7 +394,7 @@ You will then be returned to the main Composer page and you will see your new Bu
 
 Click the Connect now -> button at the bottom of the card.
 
-## Explore the network template
+### Explore the network template
 As we saw earlier, there is a README.md file which describes the network. In this case, there are 3 types of Participants, Growers, Importers, and Shippers. They interact with 2 types of Assets, Contracts and Shipments. There are 3 types of transactions, ShipmentReceived, TemperatureReading and SetupDemo.
 
 You can see the definitions of all these by looking at the Model File.
@@ -410,7 +407,7 @@ For this exercise, we’re going to make a few modifications to this model. The 
 •	Add an event notification when the ship arrives in port
 •	Modify the temperature reading transaction chaincode to create the event if it is above the contractual threshold
 
-### Add IoT components to the network model
+#### Add IoT components to the network model
 In the Composer editor, click on the Model File models/perishable.cto link on the right.
 
 In the editor for the models/perishable.cto, below the enum ShipmentStatus, we will add the following lines. This will define the valid values for a directional reading on a compass. This will help to validate the GPS readings.
@@ -488,7 +485,7 @@ Click the Deploy Changes button off to the lower left.
 
   <img src="/images/HYC20.png" width="100%" height="100%">
 
-## Add chaincode to monitor the temperature readings from the sensor
+#### Add chaincode to monitor the temperature readings from the sensor
 
 Click on the Script File lib/logic.js link on the left to edit the chaincode. 
 
@@ -531,7 +528,7 @@ async function temperatureReading(temperatureReading) {
 }
 ```
 
-### Add chaincode to register the GPS location
+#### Add chaincode to register the GPS location
 
 Now, we will add in the new GPS Reading transaction. At the bottom of the file, paste in the following lines. Something important to note. The comments above the function are critical. The @param ( ) specifies the Transaction Type that is defined in your model file. This has to match exactly. The name directly after it needs to match the function name exactly so that it can be invoked when that Transaction is submitted. The @transaction is required to specify that this is a Transaction function.
 
@@ -599,6 +596,7 @@ shipper.accountBalance = 5000;
 
 Click the Deploy Changes button to save the changes.
 
+# Phase 5
 ## Test the Network
 
 ### Run the Setup Demo transaction 

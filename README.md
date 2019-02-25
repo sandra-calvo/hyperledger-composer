@@ -46,7 +46,8 @@ A **Business Network** is the definition of the parties and events involved in t
 •	The goods and services that are exchanged
 •	How the exchange is to take place (including business rules governing payment and penalties)
 •	Which members within the group are allowed to participate, and when
-Assets
+
+### Assets
 An asset is anything of value that can be exchanged between parties in a business agreement. That means an asset can be pretty much anything. Examples include:
 •	A boat
 •	A quantity of stock
@@ -100,7 +101,7 @@ There are multiple components to a Business Network which we will discuss below 
 •	Business Network Card – a file containing the identity and credentials of an authorized user of the Business Network
 
 
-IMAGE
+  <img src="/images/HYC1.png" width="100%" height="100%">
 
 #### Model file
 The model file uses the Hyperledger Composer modeling language to define components such as:
@@ -124,20 +125,20 @@ This defines what data elements will be exposed with a query.
 ## Access the Hyperledger Composer Playground
 Open your web browser, preferably Chrome or Firefox, and navigate to the Hyperledger Composer Playground on IBM Cloud using the URL https://composer-playground.mybluemix.net/test. You will be presented with this:
 
-IMAGE
+  <img src="/images/HYC2.png" width="100%" height="100%">
 
 If you receive a message stating that you have an older version, only if you’ve used this in the past, click the Clear State button.
 
 On this page, click the “Let’s Blockchain!” button. After that, you will see a mostly black canvas that looks like this:
 
-IMAGE
+  <img src="/images/HYC3.png" width="100%" height="100%">
 
 This is the main Composer page where you can see all available Business Networks. To start with, you have one, the my-basic-sample Business Network. We will use this to navigate and explore the Composer user interface.
 
 ### Explore the UI 
 Click on the Get Started -> link at the bottom of the my-basic-sample network card.
 
-IMAGE
+  <img src="/images/HYC4.png" width="100%" height="100%">
 
 This will open the Composer UI and display the README.md file which gives an overview of what is in the Basic Sample Business Network. In short, there is one type of Participant called SampleParticipant, one type of Asset called SampleAsset, one type of Transaction called SampleTransaction and one Event type called SampleEvent.
 
@@ -149,17 +150,17 @@ The Hyperledger Composer is broken down into 5 main areas.
 •	Workarea – The main area for editing files and testing the network
 •	Additional Help – Links to additional resources such as the GitHub repository, Documentation, Tutorial and Help from the Community 
 
-IMAGE
+  <img src="/images/HYC5.png" width="100%" height="100%">
 
 ### Review the Basic Network Sample in the Playground
 Let’s start out by navigating around the files within this Business Network. On the left-hand side of the page is the Files section. You should see this:
 
-IMAGE
+  <img src="/images/HYC6.png" width="100%" height="100%">
 
 You are currently looking at the README.md file which gives the overview of the Business Network.
 Click on the Model File models/sample.cto. In the workarea, you should now see an editor with the models/sample.cto file.
 
-IMAGE
+  <img src="/images/HYC7.png" width="100%" height="100%">
 
 We will cover the modeling language basics in the next section. In this model file, you’ll see the following defined:
 •	Asset – SampleAsset with an Identifier attribute and a value attribute. Additionally, the SampleAsset can be related to a SampleParticipant who is the owner of this SampleAsset.
@@ -171,7 +172,7 @@ So, you can see that you define the players in the network along with the attrib
 
 Now, click on the Script File lib/sample.js and you will see the code that is executed when transactions are submitted. Remember, we have only one type of Transaction, SampleTransaction.
 
-IMAGE
+  <img src="/images/HYC8.png" width="100%" height="100%">
 
 The code in Composer is written in JavaScript. The sampleTransaction function takes a SampleTransaction structure which includes the new asset Value and the SampleAsset to be updated. You will see in the code that it saves off the old value into a local variable of oldValue in the statement.
 
@@ -229,7 +230,7 @@ emit(event);
 
 Click on the Access Control permissions.acl file. You will see an editor window with the following.
 
-IMAGE
+  <img src="/images/HYC9.png" width="100%" height="100%">
 
 The Access Control file allows you to set the permissions on who can Create, Read, Update or Delete components within the Network. Permissions are created as a set of Rules. One of these rules states that an Owner of a SampleAsset has full access to their SampleAssets.
 
@@ -246,11 +247,11 @@ rule OwnerHasFullAccessToTheirAssets {
 
 Next, we will move from Defining our Business Network to Testing. In the Navigation section, click on Test.
 
-IMAGE
+  <img src="/images/HYC10.png" width="100%" height="100%">
 
 Now, you will see an interface for testing the network.
 
-IMAGE
+  <img src="/images/HYC11.png" width="100%" height="100%">
 
 In the left navigation, you’ll see Participants, Assets and Transactions and button at the bottom for testing the Submission of Transactions. Click on SampleParticipant. You’ll notice that there are no Participants in the registry. In the upper right corner, click on Create New Participant. You will see a json editor that allows you to create a new Participant record in the Registry. Copy and Paste the following and click Create New.
 ```
@@ -288,7 +289,7 @@ Let’s create a transaction. Click Submit Transaction. In the editor, you will 
 
 Once submitted, you will see the new SampleTransaction added to the Registry. Click the view record link to the right. You will see the transaction you submitted, plus a unique identifier and timestamp of the transaction. Click on the Events(1) link above it and you’ll see that an event was fired because of this transaction. Click on the chevron icon   to the right to expose the details of the event.
 
-IMAGE
+  <img src="/images/HYC12.png" width="100%" height="100%">
 
 You will notice the related SampleAsset that was updated, the unique identifier of the event and a timestamp the event was created. Also, you will see the old and new values. Remember, these were defined in the script file we viewed earlier.
 
@@ -364,11 +365,11 @@ So, now that you have a basic understanding of the modeling concepts, let’s bu
 
 In the Navigation section at the top in the upper right-hand corner, click where it says admin. 
 
-IMAGE
+  <img src="/images/HYC14.png" width="100%" height="100%">
 
 This will take you back to the main Composer page.
 
-IMAGE
+  <img src="/images/HYC15.png" width="100%" height="100%">
 
 ## Build a network
 
@@ -376,23 +377,23 @@ Deploy a new network using sample network template
 
 Back on the main Composer page, click on the Deploy a new business network card.
 
-IMAGE
+  <img src="/images/HYC16.png" width="100%" height="100%">
 
 You will be prompted with the following page.
 
-IMAGE
+  <img src="/images/HYC17.png" width="100%" height="100%">
 
 You will need to fill out the following:
 
-IMAGE
+TABLE
 
 Click the Deploy button on the right.
 
-IMAGE
+  <img src="/images/HYC18.png" width="100%" height="100%">
 
 You will then be returned to the main Composer page and you will see your new Business Network Card.
 
-IMAGE
+  <img src="/images/HYC19.png" width="100%" height="100%">
 
 Click the Connect now -> button at the bottom of the card.
 
@@ -485,7 +486,7 @@ event ShipmentInPortEvent {
 
 Click the Deploy Changes button off to the lower left.
 
-IMAGE
+  <img src="/images/HYC20.png" width="100%" height="100%">
 
 ## Add chaincode to monitor the temperature readings from the sensor
 
@@ -606,7 +607,7 @@ In the Navigation section, click on Test.
 
 You will now notice that you have different types of Participants than we saw in the Basic Network example earlier. You now have Grower, Importer, Shipper as Participant Types. You have Contract and Shipment Asset Types. If you click on each, you’ll see that as we saw earlier, there are no entries in the registries for each type. If you click Submit Transaction, you can choose Setup Demo and click Submit.
 
-IMAGE
+  <img src="/images/HYC21.png" width="100%" height="100%">
 
 Once that is complete, you will see a new Grower, Importer, Shipper, Contract and Shipment in the registries. The ID’s are as follows:
 

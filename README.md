@@ -1,6 +1,15 @@
-# hyperledger-composer
-Building your first Blockchain Network using Hyperledger Composer
 
+# Building your first Blockchain Network using Hyperledger Composer
+
+In this guide:
+  - [Introduction](#introduction)
+  - [PHASE 1](#phase-1): 
+  - [PHASE 2](#phase-2): 
+  - [PHASE 3](#phase-3): 
+  - [PHASE 4](#phase-4): 
+  
+  
+  <img src="/images/simulation2.png" width="100%" height="100%">
 
 ## INTRODUCTION
 This tutorial gets you started developing a blockchain network. I’ll introduce you to Hyperledger Composer and its user interface, Hyperledger Composer Playground, where you can model and test your network with nothing more than Docker and your web browser.
